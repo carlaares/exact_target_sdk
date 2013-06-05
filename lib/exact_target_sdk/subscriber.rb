@@ -16,6 +16,7 @@ class Subscriber < APIObject
   property 'SubscriberKey', :required => true
   property 'EmailAddress', :required => true
   property 'EmailTypePreference'
+  array_property 'Client'
   array_property 'Attributes'
   array_property 'Lists'
 

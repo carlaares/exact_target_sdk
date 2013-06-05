@@ -2,7 +2,7 @@ require 'spec_helper'
 
 include ExactTargetSDK
 
-describe Attribute do
+describe Attributes do
 
   context 'a bare Attribute' do
 
@@ -12,7 +12,7 @@ describe Attribute do
 
   context 'an Attribute with Name set' do
 
-    subject { Attribute.new 'Name' => 'foo' }
+    subject { Attributes.new 'Name' => 'foo' }
 
     it { should be_valid }
 

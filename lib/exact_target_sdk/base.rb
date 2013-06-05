@@ -151,7 +151,7 @@ module ExactTargetSDK
 
     def render_property!(property_name, property_value, xml, options = {})
       if property_value.is_a?(APIObject)
-        xml.__send__(property_name, {"xsi:type" => property_value.type_name}) do
+        xml.__send__(property_name) do
           property_value.render!(xml)
         end
       elsif property_value.is_a?(Array)
