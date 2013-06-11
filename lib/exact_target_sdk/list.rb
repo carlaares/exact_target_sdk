@@ -1,7 +1,8 @@
 module ExactTargetSDK
 class List < APIObject
 
-  property 'ListName', :required => true
+  property 'ID'
+  property 'ListName'
   array_property 'Subscribers'
 
 end
