@@ -25,6 +25,18 @@ class Subscriber < APIObject
     self.EmailAddress = self.SubscriberKey if self.EmailAddress.nil?
   end
 
+  def self.find(filters)
+    client = ExactTargetSDK::Client.new
+    simple_filters = filters.collect do |property, operator, value|
+      ExactTargetSDK::SimpleFilterPart.new(Property: property, SimpleOperator: operator, Value: value)
+    end
+    filter = if simple_filters.size == 1
+      simple_filters.first
+    else
+      ExactTargetSDK::ComplexFilterPart.new('LeftOperand' => simple_filters[0], 'RightOperand' => simple_filters[1], 'LogicalOperator' => ExactTargetSDK::LogicalOperators::AND)
+    end
+    client.Retrieve('Subscriber', filter, 'ID', 'EmailAddress', 'SubscriberKey', 'Status')
+  end
 end
 
 end

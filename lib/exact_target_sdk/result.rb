@@ -7,7 +7,7 @@ module ExactTargetSDK
       @result[:id] || self.id
     end
 
-    def object_id
+    def response_object_id
       @result[:object_id] || self.object_id
     end
 
